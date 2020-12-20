@@ -68,7 +68,7 @@ def edges2shp(dict_nodes,list_edges,fpath=None):
 """ Part2 .nt file (netCDF4)
 	GDP数据是这种格式
 """
-from netCDF4 import Dataset
+# from netCDF4 import Dataset
 def readCDF(f):
     data = Dataset(f, "r", format="NETCDF4")
     return data
@@ -99,7 +99,7 @@ def readCDF2gdf(f,value='GDP_PPP',time=2015, bound=(-180,180,-90,90)):
 """ Part3 .tiff文件 
     GPWv4 人口数据为这种格式  (https://sedac.ciesin.columbia.edu/data/collection/gpw-v4)
 """
-import georasters
+# import georasters
 def read_tiff(f):
     return georasters.from_file(f)
 

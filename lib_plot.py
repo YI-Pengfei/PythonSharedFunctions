@@ -9,7 +9,7 @@ from matplotlib import collections
 import matplotlib.image as mpimg
 import numpy as np
 import pandas as pd
-from mpl_toolkits.basemap import Basemap
+#from mpl_toolkits.basemap import Basemap
 from matplotlib.patches import Polygon
 import seaborn as sns
 #from colour import Color
@@ -17,9 +17,9 @@ from collections import namedtuple
 
 from shapely.geometry import Point, LineString
 from descartes import PolygonPatch
-import geoplot as gplt
+#import geoplot as gplt
 
-from matplotlib import colors as mcolors
+#from matplotlib import colors as mcolors
 
 
 from pylab import mpl  
@@ -543,6 +543,25 @@ class ImPlot:
             #plt.show()
             #pass  # 不显示的话之后还可以继续画线什么的
             plt.show()
+
+### 3D plot
+# fig = plt.figure()
+# ax = fig.gca(projection='3d')
+# X = np.arange(0,500,1)
+# Y = np.arange(0,500,1)
+# X,Y = np.meshgrid(X,Y)
+# # Plot the surface.
+# surf = ax.plot_surface(X, Y, Q, cmap=cm.coolwarm,
+#                        linewidth=0, antialiased=False)
+# # Customize the z axis.
+# ax.set_zlim(-1.01, 1.01)
+# ax.zaxis.set_major_locator(LinearLocator(10))
+# ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
+# # Add a color bar which maps values to colors.
+# fig.colorbar(surf, shrink=0.5, aspect=5)
+# plt.show()
+
+
 ######################################################
 # 通过组合这些简单的颜色、线型，可以满足基本的作图需求
 colors = ['b','g','r','c','m','y','k',]  # 简单的颜色
