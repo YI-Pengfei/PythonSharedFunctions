@@ -1,5 +1,6 @@
 """
-    2019.09.10  save/load dictionary to/as json
+	2021.03.27 检查文件路径是否存在，并创建路径
+        2019.09.10  save/load dictionary to/as json
 	2019.08.25  pickle save/load object.
 	集成了常用的文件操作函数
 """
@@ -10,6 +11,37 @@ import json
 import lxml.etree as ET
 import pandas as pd
 
+def check_and_creat_dir(file_url):
+    '''
+    判断文件是否存在，文件路径不存在则创建文件夹
+    :param file_url: 文件路径，包含文件名
+    :return:
+    '''
+    file_gang_list = file_url.split('/')
+    if len(file_gang_list)>1:
+        [fname,fename] = os.path.split(file_url)
+        print(fname,fename)
+        if not os.path.exists(fname):
+            os.makedirs(fname)
+        else:
+            return None
+        #还可以直接创建空文件
+        
+     else:
+        os.makedirs(file_url)
+
+##########################  pickle  ##########################################
+def pickle_save(obj,file):
+    check_and_creat_dir(file)
+    with open(file,'wb') as f:
+        pickle.dump(obj,f)
+        
+def pickle_load(file):
+    with open(file,'rb') as f:
+        obj = pickle.load(f)
+    return obj
+	
+	
 def read_csv2dict(f,key,value):
     """ read CSV, 并指定两列作为键和值
     """
@@ -114,15 +146,7 @@ def find_corresponding(f,files):
     print('No corresponding file:',f)
     return None
 
-##########################  pickle  ##########################################
-def pickle_save(obj,file):
-    with open(file,'wb') as f:
-        pickle.dump(obj,f)
-        
-def pickle_load(file):
-    with open(file,'rb') as f:
-        obj = pickle.load(f)
-    return obj
+
 ######################### json ################################################
 def json_save(test_dict, file,encoding='utf-8'):
     json_str = json.dumps(test_dict, indent=4,ensure_ascii =False)
